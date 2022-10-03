@@ -1,0 +1,99 @@
+$border-color: lavender;
+$button-color: gainsboro;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.App {
+  padding-top: 15px;
+  width: 100%;
+  .mainSection {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+.todoInputSection {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 15px;
+  height: 100px;
+  border: 2px solid $border-color;
+  border-radius: 4px;
+  padding: 15px;
+  .todoInputSection_input {
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+  .todoInputSection_button {
+    background-color: $button-color;
+    border: none;
+    border-radius: 4px;
+  }
+  .todoInputSection_button:hover {
+    font-weight: bold;
+  }
+}
+
+.todoFilterSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  padding: 15px 0;
+  button {
+    height: 37px;
+    border-radius: 4px;
+    border: none;
+    background-color: $button-color;
+  }
+  button:hover {
+    font-weight: bold;
+  }
+  .selectedFilter {
+    background-color: greenyellow;
+  }
+}
+
+.todoListSection {
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 20px;
+  .todoListSection_element {
+    text-align: left;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 20fr 1fr 1fr;
+    grid-column-gap: 5px;
+    button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      color: greenyellow;
+    }
+    button:hover {
+      font-weight: bold;
+    }
+    .element_redButton {
+      color: red;
+    }
+  }
+  .todoListSection_element:hover {
+    font-weight: bold;
+  }
+  .element_Done {
+    border-color: greenyellow;
+    span {
+      color: greenyellow;
+      text-decoration: line-through;
+    }
+  }
+}
