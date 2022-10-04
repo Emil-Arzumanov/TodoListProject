@@ -13,6 +13,7 @@ class Todo {
         {id: 3, title: "Do the test task", completed: false}
     ]
     newTodo: string = ""
+    currentFilter = "all"
 
     constructor() {
         makeAutoObservable(this);
@@ -20,7 +21,6 @@ class Todo {
 
     addTodo() {
         this.todoArr.push({id:this.todoArr.length+1, title:this.newTodo, completed: false});
-        console.log(this.todoArr);
         this.newTodo = "";
     }
 
@@ -36,6 +36,10 @@ class Todo {
         this.todoArr.forEach((todo,index) => {
             if(todo.id === id) this.todoArr[index].completed = !this.todoArr[index].completed;
         });
+    }
+
+    updateFilter(filter:string) {
+        this.currentFilter = filter;
     }
 }
 

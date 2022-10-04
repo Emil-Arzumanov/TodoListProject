@@ -2,38 +2,34 @@ import React from 'react';
 import Store from '../../../store/todo';
 import {observer} from "mobx-react-lite";
 
-const TodoListElem = () => {
+interface propsInterface {
+    sectionClassName:string,
+    id:number,
+    title:string,
+    buttonClassName:string,
+    completed:boolean
+}
+
+const TodoListElem = (props:propsInterface) => {
     return (
-        <>
-            {
-                Store.todoArr.map(todo => {
-                    return (
-                        <section
-                            className={todo.completed ? "todoListSection_element element_Done" : "todoListSection_element"}
-                            key={todo.id}
-                        >
-                            <span className="element_span">{todo.title}</span>
-                            {
-                                todo.completed
-                                    ? <button
-                                        className="element_doButton element_redButton"
-                                        onClick={() => {Store.updateTodo(todo.id)}}
-                                    >Undo</button>
-                                    : <button
-                                        className="element_doButton"
-                                        onClick={() => {Store.updateTodo(todo.id)}}
-                                    >Do</button>
-                            }
-                            <button
-                                className="element_redButton"
-                                onClick={() => {Store.removeTodo(todo.id)}}
-                            >Delete</button>
-                        </section>
-                    );
-                })
-            }
-        </>
+        <section className={props.sectionClassName}>
+            <span className="element_span">{props.title}</span>
+            <button className={props.buttonClassName}
+                    onClick={() => {
+                        Store.updateTodo(props.id)
+                    }}
+            >{props.completed ? "Undo" : "Do"}
+            </button>
+            <button className="element_redButton"
+                    onClick={() => {
+                        Store.removeTodo(props.id);
+                        console.log(Store.todoArr);
+                    }}
+            >Delete
+            </button>
+        </section>
+
     );
 }
 
-export default observer(TodoListElem)
+export default observer(TodoListElem);
