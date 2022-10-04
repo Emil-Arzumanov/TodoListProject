@@ -1,6 +1,7 @@
 import React from 'react';
+import {observer} from "mobx-react-lite";
 
-export const TodoListFilter = () => {
+const TodoListFilter = () => {
     return (
         <section className="todoFilterSection">
             <button className="all selectedFilter">All</button>
@@ -9,3 +10,5 @@ export const TodoListFilter = () => {
         </section>
     );
 }
+
+export default observer(TodoListFilter);
